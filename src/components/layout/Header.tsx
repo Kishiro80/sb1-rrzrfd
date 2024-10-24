@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { FaUser, FaHeart, FaStore, FaUtensils } from 'react-icons/fa'
+import AuthButton from '../auth/AuthButton'
 
 export default function Header() {
   const { data: session } = useSession()
@@ -27,21 +28,10 @@ export default function Header() {
               <Link href="/profile" className="nav-link">
                 <FaUser className="text-gray-600" />
               </Link>
-              <button
-                onClick={() => signOut()}
-                className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
-              >
-                Sign Out
-              </button>
+              
             </>
-          ) : (
-            <button
-              onClick={() => signIn('google')}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            >
-              Sign In
-            </button>
-          )}
+          ) :  null }
+          <AuthButton /> 
         </div>
       </nav>
     </header>
